@@ -75,8 +75,8 @@ Above medium
 
   ## Accessing database
   - There is no way that we can access the db from the front end, the only way is access via the server. The good news is that XXE not only accesses local server files but also can perform HTTP requests from inside it. I cannot access the db, but if I am the admin, why can't I?
-  ## Server Side Request Forgery attack
-  - The first thing that appeared in my mind was to fake a request and send it to the database. This can be achieved by sending an HTTP request via XXE. Because this request is from the server, the database "trusts" it and accept the request.
+  ## Server Side Request Forgery (SSRF) attack
+  - The first thing that appeared in my mind was to fake a request and send it to the database. This can be achieved by sending an HTTP request via XXE attack. Because this request is from the server, the database "trusts" it and accept the request.
   - I changed the payload to perform an SSRF attack and sent it via Repeater:
     ```
     <?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE xxe [<!ENTITY file SYSTEM "http://db:9200">]><post author="CTF Participant" id="0" title="wee"><message>&file;</message></post>
