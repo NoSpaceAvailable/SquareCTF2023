@@ -71,10 +71,10 @@ Above medium
   - Looks like we have nothing to do with the framework, the remaining one is Elasticsearch. According to the article, it is a NoSQL database. It's more interesting for you to know that it has a feature called *soft delete*. It means that the deleted records still remain in the database but you cannot see it normally.
     [Soft delete in Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-history-retention.html)
 
-  - The key is here. We know that the admin deleted the flag from the database, but maybe it was just a soft delete. Maybe, the record is still in the database, and I need to access the database. But how?
+  - The key is here. We know that the admin deleted the flag from the database, but maybe it was just a soft delete. Maybe, the record is still in the database, and I need to access the database.
 
   ## Accessing database
-  - There is no way that we can access the db from the front end, the only way is access via the server. The good news is that XXE not only accesses local server files but also can perform HTTP requests from inside it. I cannot access the db, but if I am the admin, why can't I?
+  - There is no way that we can access the db from the front end, the only way is access via the server. The good news is that XXE not only accesses local server files but also can perform HTTP requests from inside it.
   ## Server Side Request Forgery (SSRF) attack
   - The first thing that appeared in my mind was to fake a request and send it to the database. This can be achieved by sending an HTTP request via XXE attack. Because this request is from the server, the database "trusts" it and accept the request.
   - I changed the payload to perform an SSRF attack and sent it via Repeater:
